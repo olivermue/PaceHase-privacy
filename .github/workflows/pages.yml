@@ -1,0 +1,55 @@
+name: Deploy privacy page to Pages
+
+# Renders index.html by substituting the ${CONTACT_*} placeholders from
+# repository Variables (Settings -> Secrets and variables -> Actions -> Variables),
+# then publishes to GitHub Pages. The real contact data lives only in those
+# Variables — never in this public repo's git history.
+#
+# Required repository Variables (set the real values in repo Settings, NOT here):
+#   CONTACT_NAME     e.g.  Jane Doe
+#   CONTACT_ADDRESS  e.g.  Example Street 1, 00000 Sampletown, Country
+#   CONTACT_EMAIL    e.g.  someone@example.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render template
+        env:
+          CONTACT_NAME: ${{ vars.CONTACT_NAME }}
+          CONTACT_ADDRESS: ${{ vars.CONTACT_ADDRESS }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: |
+          set -e
+          : "${CONTACT_NAME:?set repo Variable CONTACT_NAME}"
+          : "${CONTACT_ADDRESS:?set repo Variable CONTACT_ADDRESS}"
+          : "${CONTACT_EMAIL:?set repo Variable CONTACT_EMAIL}"
+          mkdir -p dist
+          # Only the three named vars are substituted; any other $ in the file is left intact.
+          envsubst '${CONTACT_NAME} ${CONTACT_ADDRESS} ${CONTACT_EMAIL}' < index.html > dist/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

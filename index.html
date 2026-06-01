@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RunCoach — Privacy Policy</title>
+<!--
+  This file is a TEMPLATE. The ${CONTACT_*} placeholders are filled in at deploy
+  time by .github/workflows/pages.yml from repository Variables, so the real
+  contact data never lives in this public repo's git history.
+-->
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 760px; margin: 2rem auto; padding: 0 1rem;
+         font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  h1 { font-size: 1.6rem; } h2 { font-size: 1.2rem; margin-top: 2rem; }
+  code { background: rgba(127,127,127,.18); padding: .1em .35em; border-radius: 4px; }
+  .meta { opacity: .7; font-size: .9rem; }
+  table { border-collapse: collapse; width: 100%; margin: .5rem 0; }
+  th, td { border: 1px solid rgba(127,127,127,.35); padding: .4rem .6rem; text-align: left; vertical-align: top; }
+</style>
+</head>
+<body>
+
+<h1>RunCoach — Privacy Policy</h1>
+<p class="meta">Effective date: 1 June 2026 · Last updated: 1 June 2026</p>
+
+<p>RunCoach is a native Android running-coach app that guides your runs with
+spoken cues, records your track, and keeps a local history of your runs. This
+policy explains what data the app processes and why. <strong>RunCoach has no
+user accounts on our servers and does not run analytics or advertising.</strong></p>
+
+<h2>Who is responsible (Impressum)</h2>
+<p>
+  ${CONTACT_NAME}<br>
+  ${CONTACT_ADDRESS}<br>
+  Email: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
+</p>
+
+<h2>What data the app processes</h2>
+<table>
+  <tr><th>Data</th><th>Why</th><th>Where it lives</th></tr>
+  <tr>
+    <td>Precise location (GPS)</td>
+    <td>Live pace/distance tracking, coaching cues, kilometre splits, and
+        recording your run as a GPX track.</td>
+    <td>Processed on your device; saved on your device as part of each run.</td>
+  </tr>
+  <tr>
+    <td>Run history (GPX track, run summary, coaching cues, statistics)</td>
+    <td>So you can review past runs and see per-phase / per-kilometre stats.</td>
+    <td>Stored only in the app's private storage on your device.</td>
+  </tr>
+  <tr>
+    <td>Motion &amp; environment sensors (accelerometer, gyroscope, rotation
+        vector, step counter/detector, barometer)</td>
+    <td><em>Optional.</em> Diagnostic logging, only when you enable it in
+        Settings, to investigate GPS/pace accuracy.</td>
+    <td>Written to the run's folder on your device. Never transmitted.</td>
+  </tr>
+  <tr>
+    <td>Strava connection (access &amp; refresh tokens)</td>
+    <td><em>Optional.</em> Only if you connect Strava, so the app can upload
+        runs on your behalf.</td>
+    <td>Stored only on your device.</td>
+  </tr>
+</table>
+
+<h2>Connecting Strava and uploading runs</h2>
+<p>Connecting Strava is entirely optional. If you choose to connect:</p>
+<ul>
+  <li><strong>Sign-in:</strong> to complete Strava's OAuth sign-in without
+      embedding confidential app credentials in the app, the short-lived
+      authorization code and token-refresh requests are relayed through a small
+      server operated by the developer. This server only exchanges
+      authentication tokens with Strava — <strong>your runs, location, and
+      track data never pass through it.</strong></li>
+  <li><strong>Uploading a run:</strong> when you upload a run, the activity file
+      — which includes its GPS track — is sent directly from your device to
+      Strava under your Strava account. Strava then processes that data under
+      <a href="https://www.strava.com/legal/privacy">Strava's Privacy Policy</a>.</li>
+</ul>
+<p>You can disconnect Strava in the app at any time (this deletes the stored
+tokens), and revoke access entirely at
+<a href="https://www.strava.com/settings/apps">strava.com/settings/apps</a>.</p>
+
+<h2>What we do not do</h2>
+<ul>
+  <li>No advertising and no advertising identifiers.</li>
+  <li>No analytics, tracking, or third-party tracking SDKs.</li>
+  <li>No user accounts on our servers; no profile is created about you.</li>
+  <li>We never sell or rent your data.</li>
+</ul>
+
+<h2>Permissions the app requests</h2>
+<table>
+  <tr><th>Permission</th><th>Why</th></tr>
+  <tr><td>Precise location (<code>ACCESS_FINE_LOCATION</code>)</td><td>Track your run.</td></tr>
+  <tr><td>Foreground-service location (<code>FOREGROUND_SERVICE_LOCATION</code>)</td><td>Keep tracking reliably while a run is in progress, even with the screen off.</td></tr>
+  <tr><td>Notifications (<code>POST_NOTIFICATIONS</code>)</td><td>Show the ongoing-run notification required by Android for the tracking service.</td></tr>
+  <tr><td>Physical activity (<code>ACTIVITY_RECOGNITION</code>)</td><td>Read step sensors for optional diagnostic logging.</td></tr>
+  <tr><td>Vibrate / modify audio settings</td><td>Haptic feedback and ducking music under spoken cues.</td></tr>
+  <tr><td>Internet</td><td>Only for connecting and uploading to Strava (if you use it).</td></tr>
+</table>
+<p>RunCoach does <strong>not</strong> request background location.</p>
+
+<h2>Data sharing</h2>
+<p>The only third party that ever receives your data is <strong>Strava</strong>,
+only if you connect it, and only the activity you choose to upload. No other
+sharing takes place.</p>
+
+<h2>Retention and deletion</h2>
+<p>Your runs live on your device until you delete them. You can delete an
+individual run in the app, disconnect Strava to remove stored tokens, or
+uninstall the app to remove all RunCoach data from your device. Activities you
+already uploaded to Strava remain on Strava until you delete them there.</p>
+
+<h2>Children</h2>
+<p>RunCoach is not directed at children and does not knowingly collect data from
+children.</p>
+
+<h2>Your rights</h2>
+<p>Because RunCoach stores your data on your own device under your control, you
+can access and erase it directly in the app. If you have questions about this
+policy or your data, contact us at the address above. Where the GDPR applies,
+you have rights of access, rectification, erasure, and to lodge a complaint with
+a supervisory authority.</p>
+
+<h2>Changes to this policy</h2>
+<p>We may update this policy as the app evolves. Material changes will be
+reflected here with a new "Last updated" date.</p>
+
+</body>
+</html>
